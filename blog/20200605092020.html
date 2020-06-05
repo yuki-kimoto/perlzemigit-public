@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Hello Giblog 5 - Git入門 - GitをPerl開発で使う</title>
-<meta name="description" content="Hello Giblog 5.">
+<title>git init - Gitリポジトリの初期化 - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="Gitリポジトリの初期化を行うには「git init」を使用します。Gitリポジトリにしたいディレクトリの中で「git init」を実行します。">
   </head>
   <body>
     <div class="container">
@@ -29,10 +29,29 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20190316121234.html">Hello Giblog 5</a></h2>
+    <h2><a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a></h2>
 <p>
-  Hello Giblog 5.
+  Gitリポジトリの初期化を行うには「git init」を使用します。Gitリポジトリにしたいディレクトリの中で「git init」を実行します。
 </p>
+<pre>
+cd myapp
+git init
+</pre>
+<p>
+  <a href="https://linux.perlzemi.com/blog/20191012191854.html">cd</a>コマンドで、myappというディレクトリの中に移動して、「git init」を実行しています。
+</p>
+<p>
+  「.git」というGitがリポジトリ管理に利用する隠しディレクトリが作成されます。<a href="https://linux.perlzemi.com/blog/20191126082723.html">ls</a>コマンドで確認できます。
+</p>
+<pre>
+ls -a
+</pre>
+<p>
+  「.git」という隠しディレクトリができています。
+</p>
+<pre>
+.git
+</pre>
 
   </div>
   <div class="bottom">
