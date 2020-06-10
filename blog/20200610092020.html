@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Gitで管理しないファイルを設定する - .gitignore - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="Gitで管理しないファイルを設定しておくには「.gitignore」ファイルを使用します。touchコマンドでファイルを作成します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git入門 - GitをPerl開発で使う</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a></h2>
+<p>
+  Gitで管理しないファイルを設定しておくには「.gitignore」ファイルを使用します。<a href="https://linux.perlzemi.com/blog/20191205081119.html">touch</a>コマンドでファイルを作成します。
+</p>
+<pre>
+touch .gitignore
+</pre>
+<p>
+  .gitignoreは、リポジトリのどこにでも置くことができますが、リポジトリのトップで管理することを、推奨します。
+</p>
+<h4>絶対パス</h4>
+<p>
+  絶対パスで記述すると、Gitリポジトリのルートからの記述になります。
+</p>
+<p>
+  「/foo」が管理されなくなる。
+</p>
+<pre>
+/foo
+</pre>
+<p>
+  「/foo/bar」が管理されなくなる。
+</p>
+<pre>
+/foo/bar
+</pre>
+<h4>相対パス</h4>
+<p>
+  相対パスで書くと、Gitリポジトリのルートディレクトリの中のどこかに含まれているファイルが管理されなくなります。
+</p>
+<p>
+  以下の場合は「foo.txt」というファイルすべてが、管理されなくなります。
+</p>
+<pre>
+foo.txt
+</pre>
+<p>
+  ワイルドカードを利用することができるので、ログだけを管理しないということができます。
+</p>
+<pre>
+*.log
+</pre>
+<h4>管理を外したものの中で、再び管理する</h4>
+<p>
+  管理を外したものの中で、再び管理するには「!」を使います。これ、どこで使うの?
+</p>
+<h4>ディレクトリを管理する</h4>
+<p>
+  .gitignoreを書いて、必ずつまづくのは、ディレクトリだけを管理できないということです。これはGitの仕様です。
+</p>
+<p>
+  ディレクトリを管理したい場合は、ディレクトリの中にまず「.gitkeep」というファイルを作成します。これは慣習的な名前で、推奨される名前です。
+</p>
+<p>
+  fooというディレクトリを管理したい場合は「foo」ディレクトリの中に「.gitkeep」を作成します。
+</p>
+<p>
+  そして、ワイルドカードを使って、まずfooディレクトリの中にあるファイルすべてを、管理しないという記述を行います。
+</p>
+<pre>
+foo/*
+</pre>
+<p>
+  .gitkeepも管理を外れているので、「!」を使って、再び管理するという記述を行います。
+</p>
+<pre>
+!foo/.gitkeep
+</pre>
+<p>
+  まとめて書くと以下になります。
+</p>
+<pre>
+foo/*
+!foo/.gitkeep
+</pre>
+<p>
+  これで、fooディレクトリをGitリポジトリで管理できます。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+    <li>Bar</li>
+    <li>Baz</li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://github.com/yuki-kimoto/giblog">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
