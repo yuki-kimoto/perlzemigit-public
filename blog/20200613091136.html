@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Githubに公開鍵を登録する - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="Githubに公開鍵を登録しましょう。公開鍵を登録するとSSHプロトコルで、Gitリポジトリのpush/pullを行うことができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git入門 - GitをPerl開発で使う</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></h2>
+<p>
+  Githubに公開鍵を登録しましょう。公開鍵を登録するとSSHプロトコルで、Gitリポジトリのpush/pullを行うことができます。
+</p>
+<p>
+  この記事は、<a href="https://linux.perlzemi.com/">Linux</a>上で秘密鍵を作成することを前提としています。
+</p>
+<h3>公開鍵と秘密鍵の生成</h3>
+<p>
+  まず、SSHの秘密鍵を保存しておくディレクトリに移動します。
+</p>
+<pre>
+cd ~/.ssh
+</pre>
+<p>
+  公開鍵と秘密鍵のペアを生成するには、ssh-keygenコマンドを実行します。公開鍵は秘密鍵とセットになっていて、秘密鍵はローカルマシンに、公開鍵は、Github上に登録します。
+</p>
+<pre>
+ssh-keygen -t rsa
+</pre>
+<p>
+  生成するファイル名を聞かれますので「id_rsa_github」と入力しましょう。
+</p>
+<p>
+  「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_git」は秘密鍵、「id_rsa_git.pub」は公開鍵です。
+</p>
+<p>
+  パスフレーズを入力してくださいと聞かれたときは、パスフレーズを設定しないので、Enterを押してください。再入力を求められるのでEnterを押してください。
+</p>
+<p>
+  <a href="https://linux.perlzemi.com/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
+</p>
+<pre>
+cat id_rsa_github.pub
+</pre>
+<p>
+  以下のように表示されます。
+</p>
+<pre>
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41/jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby/KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA+JSFLOGB8wxCV8UFh9XWXI4c5QKQ/Hyl8//nXT6suQf199VNf4Ru31rs+49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM/4OMQeIxZmZg8ysML307viqkKh/2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp@myhost
+</pre>
+<p>
+  この値が必要になるので、コピーしておきましょう。
+</p>
+<h4>秘密鍵のパーミッションは600である必要がある</h4>
+<p>
+  秘密鍵のパーミッションは600である必要があります。ssh-keygenを使って作成した場合は、パーミッションは600に設定されますが、他のサーバーから秘密鍵の内容をコピーしてきた場合は、<a href="https://linux.perlzemi.com/blog/20200519082545.html">chmod</a>コマンドを使って、パーミッションを600にしましょう。
+</p>
+<pre>
+chmod 600 id_rsa_github
+</pre>
+<h3>GithubにSSH接続する場合に作成した秘密鍵を使う設定</h3>
+<p>
+  GithubにSSH接続する場合に作成した秘密鍵を使う設定をしておきましょう。「~/.ssh/config」に追記します。パーミッションも600にしておきましょう。
+</p>
+<pre>
+echo '
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_github
+  User git
+' | cat &gt;&gt; ~/.ssh/config
+chmod 600 ~/.ssh/config
+</pre>
+<h3>Github上に公開鍵を登録</h3>
+<p>
+  Github上に公開鍵を登録しましょう。右上のユーザーアイコンの「Settings」から移動します。
+</p>
+<p>
+  <a href="https://github.com/join"><img src="/images/github/github_user_setting_button.png" style="width:100%"></a>
+</p>
+<p>
+  SSH and GPG keyをクリックします。
+</p>
+<p>
+  <a href="https://github.com/join"><img src="/images/github/github_user_setting_ssh_button.png" style="width:100%"></a>
+</p>
+<p>
+  New SSH keyをクリック。
+</p>
+<p>
+  <a href="https://github.com/join"><img src="/images/github/github_user_setting_new_ssh_key_button.png" style="width:100%"></a>
+</p>
+<p>
+  TitleとKeyを入力。Titleは任意で大丈夫です。Keyは「id_rsa_github.pub」の内容です。
+</p>
+<p>
+  <a href="https://github.com/join"><img src="/images/github/github_user_setting_input_ssh_key_button.png" style="width:100%"></a>
+</p>
+<p>
+  これで、登録が完了です。
+</p>
+<h3>GithubへSSHで接続できることの確認</h3>
+<p>
+  GithubへSSHで接続できることの確認しましょう。
+</p>
+<pre>
+ssh -T git@github.com
+</pre>
+<p>
+  まだアクセスしたホストでない場合は、通信を許可するかきかれるので「yes」と入力してEnterを押しましょう。
+</p>
+<p>
+  以下のように表示されると成功です。
+</p>
+<pre>
+Hi shinshina-kimoto! You've successfully authenticated, but GitHub does not provide shell access.
+</pre>
+<p>
+  これで、SSHで、push/pullができるようになります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+    <li>Bar</li>
+    <li>Baz</li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://github.com/yuki-kimoto/giblog">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
