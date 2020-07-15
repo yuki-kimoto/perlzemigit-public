@@ -44,11 +44,11 @@
 cd ~/.ssh
 </pre>
 <p>
-  「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「600」にします。
+  「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
 </p>
 <pre>
 mkdir ~/.ssh
-chmod 600 ~/.ssh
+chmod 700 ~/.ssh
 </pre>
 <p>
   公開鍵と秘密鍵のペアを生成するには、ssh-keygenコマンドを実行します。公開鍵は秘密鍵とセットになっていて、秘密鍵はローカルマシンに、公開鍵は、Github上に登録します。
@@ -57,8 +57,11 @@ chmod 600 ~/.ssh
 ssh-keygen -t rsa
 </pre>
 <p>
-  生成するファイル名を聞かれますので「id_rsa_github」と入力しましょう。
+  生成するファイル名を聞かれますので以下の名前で入力しましょう。
 </p>
+<pre>
+id_rsa_github
+</pre>
 <p>
   「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_github」は秘密鍵、「id_rsa_github.pub」は公開鍵です。
 </p>
