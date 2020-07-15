@@ -38,10 +38,17 @@
 </p>
 <h3>公開鍵と秘密鍵の生成</h3>
 <p>
-  まず、SSHの秘密鍵を保存しておくディレクトリに移動します。
+  まず、<a href="https://linux.perlzemi.com/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。
 </p>
 <pre>
 cd ~/.ssh
+</pre>
+<p>
+  「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「600」にします。
+</p>
+<pre>
+mkdir ~/.ssh
+chmod 600 ~/.ssh
 </pre>
 <p>
   公開鍵と秘密鍵のペアを生成するには、ssh-keygenコマンドを実行します。公開鍵は秘密鍵とセットになっていて、秘密鍵はローカルマシンに、公開鍵は、Github上に登録します。
@@ -53,7 +60,7 @@ ssh-keygen -t rsa
   生成するファイル名を聞かれますので「id_rsa_github」と入力しましょう。
 </p>
 <p>
-  「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_git」は秘密鍵、「id_rsa_git.pub」は公開鍵です。
+  「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_github」は秘密鍵、「id_rsa_github.pub」は公開鍵です。
 </p>
 <p>
   パスフレーズを入力してくださいと聞かれたときは、パスフレーズを設定しないので、Enterを押してください。再入力を求められるのでEnterを押してください。
