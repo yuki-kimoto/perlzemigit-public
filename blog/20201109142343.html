@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git init - Gitリポジトリの初期化 - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="Gitリポジトリを初期化するには「git init」コマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git入門 - GitをPerl開発で使う</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a></h2>
+<p>
+  Gitリポジトリを初期化するには「git init」コマンドを使用します。
+</p>
+<pre>
+git init
+</pre>
+<p>
+  perlzemiというディレクトリをGitリポジトリとして初期化するサンプルです。
+</p>
+<pre>
+cd perlzemi
+git init
+</pre>
+<p>
+  初期化すると「.git」というディレクトリが作成されます。
+</p>
+<pre>
+.git
+</pre>
+<p>
+  「.git」ディレクトリの中には、このリポジトリに関するGitの設定や、Gitのコミット情報が保存されます。
+</p>
+<h3>ワーキングディレクトリではない生のGitリポジトリを作成する</h3>
+<p>
+  ワーキングディレクトリを持たない生のGitリポジトリを作成するには「git init」の「--bare」オプションを使用します。
+</p>
+<p>
+  開発者として使う場合は、生のGitリポジトリ(.gitに該当するディレクトリだけ)を作成する必要はないと思いますが、Githubのようなリポジトリ管理Webインターフェースを開発する場合には、作業ディレクトリを持たないGitリポジトリを作成する場合があります。
+</p>
+<pre>
+mkdir foo.git
+cd foo.git
+git init --bare
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+    <li>Bar</li>
+    <li>Baz</li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://github.com/yuki-kimoto/giblog">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
