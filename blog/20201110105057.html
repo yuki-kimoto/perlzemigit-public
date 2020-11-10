@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git status - コミット準備されているかを確認する - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="コミット準備されているかを確認するには「git status」コマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git入門 - GitをPerl開発で使う</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a></h2>
+<p>
+  コミット準備されているかを確認するには「git status」コマンドを使用します。
+</p>
+<pre>
+# コミット準備されているかを確認
+git status
+</pre>
+<h4>コミット準備とは</h4>
+<p>
+  Gitでは、いきなりコミットするのではなく、コミット準備という作業をコミットの前に行います。コミットするファイルを確定する作業のようなものだと考えてください。
+</p>
+<h4>コミット準備がされていない場合</h4>
+<p>
+  コミット準備がされていない場合の「git status」コマンドの出力例です。
+</p>
+<pre>
+# On branch master
+# Changes not staged for commit:
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+#
+#       modified:   templates/blog/20201109142343.html
+#
+# Untracked files:
+#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#
+#       a.txt
+#       templates/blog/20201110105057.html
+no changes added to commit (use "git add" and/or "git commit -a")
+</pre>
+<p>
+  新規に作成したファイルは、まだトラックされていませんと表示されています。
+</p>
+<p>
+  修正がされたファイルは、まだコミットのための準備(ステージング)がされていませんと表示されます。
+</p>
+<h4>コミット準備がされた場合</h4>
+<p>
+  コミット準備をするには「git add」コマンドを使用します。「git add」を実行した後の状態を見てみましょう。
+</p>
+<pre>
+# コミット準備
+git add .
+
+# コミット準備がされているか確認
+git status
+</pre>
+<p>
+  「git status」の出力結果を見てみましょう。
+</p>
+<pre>
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#       new file:   a.txt
+#       modified:   templates/blog/20201109142343.html
+#       new file:   templates/blog/20201110105057.html
+#
+</pre>
+<p>
+  変更のコミット準備ができましたと表示されます。
+</p>
+<p>
+  コミットするファイルの確認ができたら「git commit」コマンドで、コミットをしましょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+    <li>Bar</li>
+    <li>Baz</li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://github.com/yuki-kimoto/giblog">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
