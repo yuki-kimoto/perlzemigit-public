@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Git入門 - GitをPerl開発で使う</title>
-<meta name="description" content="Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。">
+<title>git commit - コミットする - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="コミット準備されたファイルをコミットするには「git commit」コマンドを使用しますコメントを直接入力する場合は「-m」オプションを使用します。">
   </head>
   <body>
     <div class="container">
@@ -29,46 +29,44 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Git入門 - GitをPerl開発で使う</a></h2>
+    <h2><a href="/blog/20201113141302.html">git commit - コミットする</a></h2>
 <p>
-  Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。
+  コミット準備されたファイルをコミットするには「git commit」コマンドを使用しますコメントを直接入力する場合は「-m」オプションを使用します。
 </p>
-<h3>Gitコマンド</h3>
-<ul>
-  <li><a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20201103093112.html">git log - コミットログの内容を見る</a></li>
-  <li><a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a></li>
-  <li><a href="/blog/20201112094521.html">git add - ファイルをコミット準備状態にする</a></li>
-  <li><a href="/blog/20201113141302.html">git commit - コミットする</a></li>
-</ul>
-<h3>Gitリポジトリの基礎</h3>
-<ul>
-  <li><a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a></li>
-</ul>
-<h3>Githubとの連携</h3>
-<h4>Gitリポジトリ管理 - システム開発のソースコード管理</h4>
-<ul>
-  <li><a href="/blog/20200615091136.html">Githubへのアカウント登録</a></li>
-  <li><a href="/blog/20200614091136.html">GithubでのGitリポジトリの作成</a></li>
-  <li><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></li>
-</ul>
-<h4>Github Wikiを使った手順書管理</h4>
+<pre>
+# コメントを直接入力してコミット
+git commit -m "コメント"
+
+# コメントをviなどのエディタで開いて記述してからコミット
+git commit
+</pre>
 <p>
-  Github Wikiを使った手順書管理について解説します。
+  コミットコメントは、ソースコードの変更の内容を記述します。
 </p>
 <p>
-  プライベートリポジトリにおけるWikiの利用は現在、有料コースのみとなっています。
+  コミットする前に、コミット準備が行われている必要があります。コミット準備を行うには「<a href="/blog/20201112094521.html">git add</a>」コマンドを使用します。
 </p>
 <p>
-  手順書を無料で運用したい場合は、Githubリポジトリの各ページのREADME.mdをうまく活用しましょう。
+  <a href="https://linux.perlzemi.com/blog/20190401171737.html">viエディタ</a>で開いた場合はコメントを書いて「Esc」でコマンドモードにして「wq」と入力してEnterを押します。
 </p>
-<ul>
-  <li><a href="/blog/20200618094326.html">GithubのWikiの新規作成</a></li>
-  <li><a href="/blog/20200617094326.html">GithubのWikiの編集</a></li>
-  <li><a href="/blog/20200616094326.html">Github Wikiのコンテンツのバックアップ方法</a></li>
-  <li><a href="/blog/20200612091136.html">Github Wikiのコンテンツの検索方法</a></li>
-</ul>
+<h3>Gitにおけるコミットとは何ですか?</h3>
+<p>
+  Gitにおけるコミットとは、ある時点におけるファイルとディレクトリの状態のことです。これは40桁のコミットIDによって識別されます。
+</p>
+<pre>
+# コミットID
+6b984517092ca6dd61faa7938c136aa468ba6c44
+</pre>
+<p>
+  コミットIDがわかれば、ファイルとディレクトリを、その状態まで、戻すことができます。
+</p>
+<p>
+  Gitは、個々のコミット間のファイルとディレクトリの差分の情報を持っており、それを最初のコミットから積み上げることで、ある時点におけるファイルとディレクトリの状態を復元します。
+</p>
+<h3>コミットIDは衝突しないのですか?</h3>
+<p>
+  コミットIDはSHA1ハッシュ関数の値なので、衝突することはありえますが、天文学的に小さい確率なので、実用上は大丈夫ということなのでしょう。もしたとえ、ぶつかったとしても、ソースコードにわずかな変更「空白追加」などで回避できるはずです。
+</p>
 
   </div>
   <div class="bottom">
