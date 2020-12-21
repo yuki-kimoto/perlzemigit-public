@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Gitで削除したファイルを復元する簡単な方法 - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="「あのファイル過去に削除しちゃったけど、実は必要だった」「あの消しちゃったプログラムを改造して、新しいプログラムを作りたい」。Gitで削除したファイルを復元する簡単な方法のご紹介です。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git入門 - GitをPerl開発で使う</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a></h3>
+<p>
+  「あのファイル過去に削除しちゃったけど、実は必要だった」「あの消しちゃったプログラムを改造して、新しいプログラムを作りたい」。Gitで削除したファイルを復元する簡単な方法のご紹介です。
+</p>
+<p>
+  Gitはすべてのファイルとディレクトリの変更履歴を持っています。ですので、必要なことは、過去の状態に戻す方法と、ファイルを削除したコミットのひとつ前のコミットを知ることです。
+</p>
+<h3>ファイルを削除したコミットのひとつ前のコミットIDを見つける</h3>
+<p>
+  <a href="/blog/20201103093112.html">git logコマンドで、過去のコミットを見ることができます。</a>
+</p>
+<pre>
+git log
+</pre>
+<pre>
+commit 23cd914d4f7087a01a1d23c66edc98026013102d
+Author: Kimoto Yuki &lt;kimoto.yuki@google.com&gt;
+Date:   Wed Nov 25 10:20:34 2020 +0900
+
+    不要な○○ファイルを削除
+
+commit a15a73d62711fd9a5469ae7791241a4fd8978537
+Author: Kimoto Yuki &lt;kimoto.yuki@google.com&gt;
+Date:   Wed Nov 25 10:20:34 2020 +0900
+
+    ヘッダーを修正
+</pre>
+<p>
+  ファイル消す前のコミットID「a15a73d...」がすぐに見つかればそれでOKです。
+</p>
+<p>
+  消したのが、だいぶ前だった場合、コミットメッセージをたどるのは大変です。そのような場合は、コミットメッセージを検索しましょう。コミットメッセージは、思い出す必要がありますよ。
+</p>
+<pre>
+git log --grep 削除
+</pre>
+<p>
+  コミットメッセージに「〇〇を削除」みたいなのを入れておいた場合は、これで検索できます。
+</p>
+<p>
+  このコミットのコミットIDを取得しましょう。
+</p>
+<pre>
+commit 23cd914d4f7087a01a1d23c66edc98026013102d
+Author: Kimoto Yuki &lt;kimoto.yuki@google.com&gt;
+Date:   Wed Nov 25 10:20:34 2020 +0900
+
+    不要な○○ファイルを削除
+</pre>
+<p>
+  Gitでは、一つ前のコミットIDというのを「コミットID^」で表現できます。
+</p>
+<pre>
+# 一つ前のコミットのコミットID
+23cd914d4f7087a01a1d23c66edc98026013102d^
+</pre>
+<h3>ブランチを作成してチェックアウト</h3>
+<p>
+  上記のコミットIDから新しいブランチを作りましょう。ここでは名前は「old」とします。
+</p>
+<pre>
+git branch old 23cd914d4f7087a01a1d23c66edc98026013102d^
+</pre>
+<p>
+  git checkoutして、ブランチを切り替えます。
+</p>
+<pre>
+git checkout old
+</pre>
+<p>
+  古いファイルがあるかを見つけて、どこかにコピーしましょう。そして、元のブランチに戻ります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Copyright © Perl総合研究所
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
