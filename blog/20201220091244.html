@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>git branch - ブランチを作成する - Git入門 - GitをPerl開発で使う</title>
-<meta name="description" content="ブランチを作成するには「git branch」コマンドを使用します。">
+<title>git branch - ブランチの一覧表示・ブランチの作成 - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="ブランチの一覧表示、ブランチの作成を行うには「git branch」コマンドを使用します。">
   </head>
   <body>
     <div class="container">
@@ -29,11 +29,32 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20201220091244.html">git branch - ブランチを作成する</a></h2>
+    <h2><a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a></h2>
 <p>
-  ブランチを作成するには「git branch」コマンドを使用します。
+  ブランチの一覧表示、ブランチの作成を行うには「git branch」コマンドを使用します。
+</p>
+<h3>ブランチの一覧表示</h3>
+<p>
+  ブランチを一覧表示するには「git branch」コマンドで、引数をなしにします。
 </p>
 <pre>
+# ブランチの一覧表示
+git branch
+</pre>
+<p>
+  ブランチの一覧が表示されます。現在のブランチ名には「*」マークがついています。
+</p>
+<pre>
+* blead
+  fix_bug
+  v2_release
+</pre>
+<h3>ブランチの作成</h3>
+<p>
+  ブランチを作成するには「git branch」コマンドで、ブランチ名を指定します。
+</p>
+<pre>
+# ブランチの作成
 git branch ブランチ名
 </pre>
 <h3>ブランチ名</h3>

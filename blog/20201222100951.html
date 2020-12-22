@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Entries - Git入門 - GitをPerl開発で使う</title>
-<meta name="description" content="Entries of Git入門 - GitをPerl開発で使う">
+<title>git checkout - ブランチの変更 - Git入門 - GitをPerl開発で使う</title>
+<meta name="description" content="ブランチを変更するにはgit checkoutコマンドを使用します。">
   </head>
   <body>
     <div class="container">
@@ -29,62 +29,29 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/list.html">Entries</a></h2>
+    <h2><a href="/blog/20201222100951.html">git checkout - ブランチの変更</a></h2>
+<p>
+  ブランチを変更するには<b>git checkout</b>コマンドを使用します。
+</p>
+<pre>
+git checkout ブランチ名
+</pre>
+<p>
+  ブランチが指し示してるコミットの内容にファイルとディレクトリが切り替わります。
+</p>
+<h3>ワーキングディレクトリに変更があってもブランチを変更できる場合があるのはなぜですか?</h3>
+<p>
+  ワーキングディレクトリに変更があった場合は、切り替え先のブランチに対して、矛盾する内容の修正であれば、git checkoutは失敗します。
+</p>
+<p>
+  矛盾する内容の修正でなければ、ワーキングディレクトリの変更を維持したままブランチが切り替わります。
+</p>
+<h3>ブランチを作成するには?</h3>
+<p>
+  ブランチの作成については、ブランチの作成の記事を参考にしてください。
+</p>
 <ul>
-  <li style="list-style:none;">
-    <b>2020</b>
-  </li>
-  <li style="list-style:none">
-    12/22 <a href="/blog/20201222100951.html">git checkout - ブランチの変更</a>
-  </li>
-  <li style="list-style:none">
-    12/21 <a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a>
-  </li>
-  <li style="list-style:none">
-    12/20 <a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a>
-  </li>
-  <li style="list-style:none">
-    11/13 <a href="/blog/20201113141302.html">git commit - コミットする</a>
-  </li>
-  <li style="list-style:none">
-    11/12 <a href="/blog/20201112094521.html">git add - ファイルをコミット準備状態にする</a>
-  </li>
-  <li style="list-style:none">
-    11/10 <a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a>
-  </li>
-  <li style="list-style:none">
-    11/9 <a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a>
-  </li>
-  <li style="list-style:none">
-    11/3 <a href="/blog/20201103093112.html">git log - コミットログの内容を見る</a>
-  </li>
-  <li style="list-style:none">
-    6/18 <a href="/blog/20200618094326.html">GithubのWikiの新規作成</a>
-  </li>
-  <li style="list-style:none">
-    6/17 <a href="/blog/20200617094326.html">GithubのWikiの編集</a>
-  </li>
-  <li style="list-style:none">
-    6/16 <a href="/blog/20200616094326.html">Github Wikiのコンテンツのバックアップ方法</a>
-  </li>
-  <li style="list-style:none">
-    6/15 <a href="/blog/20200615091136.html">Githubへのアカウント登録</a>
-  </li>
-  <li style="list-style:none">
-    6/14 <a href="/blog/20200614091136.html">GithubでのGitリポジトリの作成</a>
-  </li>
-  <li style="list-style:none">
-    6/13 <a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a>
-  </li>
-  <li style="list-style:none">
-    6/12 <a href="/blog/20200612091136.html">Github Wikiのコンテンツの検索方法</a>
-  </li>
-  <li style="list-style:none">
-    6/10 <a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a>
-  </li>
-  <li style="list-style:none">
-    6/5 <a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a>
-  </li>
+  <li><a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a></li>
 </ul>
 
   </div>
