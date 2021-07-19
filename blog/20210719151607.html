@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Git元気 - Perl開発者のためのGit入門</title>
-<meta name="description" content="Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。Linuxサーバー管理者、Webアプリケーション開発者がソースコード管理を行うことを想定しています。">
+<title>Gitとは - Git元気 - Perl開発者のためのGit入門</title>
+<meta name="description" content="Gitは、ソースコードのバージョン管理システムです。分散バージョン管理システムで、リモートリポジトリ、ローカルリポジトリともに、完全なリポジトリ情報を持つことが特徴です。">
   </head>
   <body>
     <div class="container">
@@ -29,57 +29,46 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Git元気 - Perl開発者のためのGit入門</a></h2>
+    <h2><a href="/blog/20210719151607.html">Gitとは</a></h2>
 <p>
-  Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。<a href="https://linux.perlzemi.com/">Linuxサーバー管理者</a>、<a href="https://web-application-perl-genki.com/">Webアプリケーション開発者</a>がソースコード管理を行うことを想定しています。
+  Gitは、ソースコードのバージョン管理システムです。分散バージョン管理システムで、リモートリポジトリ、ローカルリポジトリともに、完全なリポジトリ情報を持つことが特徴です。
 </p>
-<h3>Gitとは</h3>
-<ul>
-  <li><a href="/blog/20210719151607.html">Gitとは</a></li>
-</ul>
-<h3>Gitコマンド</h3>
-<ul>
-  <li><a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20201103093112.html">git log - コミットログの内容を見る</a></li>
-  <li><a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a></li>
-  <li><a href="/blog/20201112094521.html">git add - ファイルをコミット準備状態にする</a></li>
-  <li><a href="/blog/20201113141302.html">git commit - コミットする</a></li>
-  <li><a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a></li>
-  <li><a href="/blog/20201222100951.html">git checkout - ブランチの変更</a></li>
-</ul>
-<h3>Gitリポジトリの基礎</h3>
-<ul>
-  <li><a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a></li>
-</ul>
-<h3>Gitテクニック</h3>
-<h4>元に戻す系</h4>
-<ul>
-  <li><a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a></li>
-</ul>
-<h3>Githubとの連携</h3>
-<h4>Gitリポジトリ管理 - システム開発のソースコード管理</h4>
-<ul>
-  <li><a href="/blog/20200615091136.html">Githubへのアカウント登録</a></li>
-  <li><a href="/blog/20200614091136.html">GithubでのGitリポジトリの作成</a></li>
-  <li><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></li>
-</ul>
-<h4>Github Wikiを使った手順書管理</h4>
+<h3>Gitの歴史</h3>
 <p>
-  Github Wikiを使った手順書管理について解説します。
+  Gitは<a href="https://linux.perlzemi.com/">Linux</a>の創始者のリーナス・トーバルズ氏によって、Linuxの大量のソースコードを速く・効率的に管理するために作成されたバージョン管理システムです。Gitは、主に<a href="https://www.c-language-perl-genki.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
 </p>
+<h3>Gitの特徴</h3>
 <p>
-  プライベートリポジトリにおけるWikiの利用は現在、有料コースのみとなっています。
+  Gitの特徴です。
 </p>
+<h4>分散リポジトリ管理システム</h4>
 <p>
-  手順書を無料で運用したい場合は、Githubリポジトリの各ページのREADME.mdをうまく活用しましょう。
+  Gitは分散リポジトリ管理システムで、リモートリポジトリとローカルリポジトリがともに、完全なリポジトリ情報を持ちます。実際のGitを使ったファイル管理では、ローカルリポジトリにファイルをコミット、差分をリモートリポジトリに送信(push)という作業を行います。
 </p>
-<ul>
-  <li><a href="/blog/20200618094326.html">GithubのWikiの新規作成</a></li>
-  <li><a href="/blog/20200617094326.html">GithubのWikiの編集</a></li>
-  <li><a href="/blog/20200616094326.html">Github Wikiのコンテンツのバックアップ方法</a></li>
-  <li><a href="/blog/20200612091136.html">Github Wikiのコンテンツの検索方法</a></li>
-</ul>
+<h4>大量のソースコードでも速い</h4>
+<p>
+  Gitは大量のソースコードでも速いです。
+</p>
+<h4>ブランチ作成が速い</h4>
+<p>
+  Gitは、ブランチの作成が速いです。
+</p>
+<h4>Gitはファイルの喪失に強い</h4>
+<p>
+  Gitは分散リポジトリ管理システムなので、ファイルの情報の喪失に強いです。ひとつのリポジトリがファイル破損をしたとしても、他のリポジトリでファイル破損がなければ、完全に復旧できます。
+</p>
+<h4>GithubというWebインタフェースがある</h4>
+<p>
+  現在Microsoftが提供しているGithubというGitのためのWebインターフェースが無料で利用できます。
+</p>
+<h4>アプリケーションのデプロイが簡単</h4>
+<p>
+  アプリケーションがテキストファイルで構成されていれば、アプリケーションのデプロイは、コマンドを一つ実行するだけで、完了します。
+</p>
+<h4>任意の過去の状態にいつでも戻せる</h4>
+<p>
+  ファイルを任意の過去の状態にいつでも戻すことができます。
+</p>
 
   </div>
   <div class="bottom">
