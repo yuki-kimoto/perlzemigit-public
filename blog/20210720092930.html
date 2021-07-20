@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Git元気 - Perl開発者のためのGit入門</title>
-<meta name="description" content="Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。Linuxサーバー管理者、Webアプリケーション開発者がソースコード管理を行うことを想定しています。">
+<title>Gitリポジトリの初期化 - Git元気 - Perl開発者のためのGit入門</title>
+<meta name="description" content="Gitリポジトリを作成しましょう。Gitでリポジトリ管理を行うときに最初に必要な作業がリポジトリの初期化です。">
   </head>
   <body>
     <div class="container">
@@ -29,58 +29,56 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Git元気 - Perl開発者のためのGit入門</a></h2>
+    <h2><a href="/blog/20210720092930.html">Gitリポジトリの初期化</a></h2>
 <p>
-  Perlのソースコードの管理にGitを利用する方法を想定した、Git入門です。<a href="https://linux-perl-genki.com/">Linuxサーバー管理者</a>、<a href="https://web-application-perl-genki.com/">Webアプリケーション開発者</a>がソースコード管理を行うことを想定しています。
-</p>
-<h3>Gitの基本</h3>
-<ul>
-  <li><a href="/blog/20210719151607.html">Gitとは</a></li>
-  <li><a href="/blog/20210720092930.html">Gitリポジトリの初期化</a></li>
-</ul>
-<h3>Gitコマンド</h3>
-<ul>
-  <li><a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20201103093112.html">git log - コミットログの内容を見る</a></li>
-  <li><a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a></li>
-  <li><a href="/blog/20201112094521.html">git add - ファイルをコミット準備状態にする</a></li>
-  <li><a href="/blog/20201113141302.html">git commit - コミットする</a></li>
-  <li><a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a></li>
-  <li><a href="/blog/20201222100951.html">git checkout - ブランチの変更</a></li>
-</ul>
-<h3>Gitリポジトリの基礎</h3>
-<ul>
-  <li><a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a></li>
-</ul>
-<h3>Gitテクニック</h3>
-<h4>元に戻す系</h4>
-<ul>
-  <li><a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a></li>
-</ul>
-<h3>Githubとの連携</h3>
-<h4>Gitリポジトリ管理 - システム開発のソースコード管理</h4>
-<ul>
-  <li><a href="/blog/20200615091136.html">Githubへのアカウント登録</a></li>
-  <li><a href="/blog/20200614091136.html">GithubでのGitリポジトリの作成</a></li>
-  <li><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></li>
-</ul>
-<h4>Github Wikiを使った手順書管理</h4>
-<p>
-  Github Wikiを使った手順書管理について解説します。
+  Gitリポジトリを作成しましょう。Gitでリポジトリ管理を行うときに最初に必要な作業がリポジトリの初期化です。
 </p>
 <p>
-  プライベートリポジトリにおけるWikiの利用は現在、有料コースのみとなっています。
+  ソースコードがあるプロジェクトのディレクトリが「myapp」だったとしましょう。
+</p>
+<pre>
+mypp/foo.pl
+    /bar.pl
+    /baz.pl
+</pre>
+<p>
+  このディレクトリをGitリポジトリとして管理するには、「<a href="/blog/20201109142343.html">git init</a>」コマンドを使って初期化します。
 </p>
 <p>
-  手順書を無料で運用したい場合は、Githubリポジトリの各ページのREADME.mdをうまく活用しましょう。
+  <a href="https://linux-perl-genki.com/blog/20191012191854.html">cdコマンド</a>で「mypp」ディレクトリに移動します。
 </p>
-<ul>
-  <li><a href="/blog/20200618094326.html">GithubのWikiの新規作成</a></li>
-  <li><a href="/blog/20200617094326.html">GithubのWikiの編集</a></li>
-  <li><a href="/blog/20200616094326.html">Github Wikiのコンテンツのバックアップ方法</a></li>
-  <li><a href="/blog/20200612091136.html">Github Wikiのコンテンツの検索方法</a></li>
-</ul>
+<pre>
+cd mypp
+</pre>
+<p>
+  次に「git init」コマンドを実行します。
+</p>
+<pre>
+# Gitリポジトリの初期化
+git init
+</pre>
+<p>
+  成功すると次のようなメッセージが出力されます。
+</p>
+<pre>
+Initialized empty Git repository in /home/kimoto/labo/myapp/.git/
+</pre>
+<p>
+  <a href="https://linux-perl-genki.com/blog/20191126082723.html">lsコマンド</a>で「-a」オプションを指定して、隠しディレクトリまで表示すると「.git」というディレクトリができています。
+</p>
+<pre>
+$ ls -a
+.  ..  foo.txt  .git
+</pre>
+<p>
+  「.git」ディレクトリの中には、このリポジトリに関するGitの設定や、Gitのコミット情報が保存されます。
+</p>
+<p>
+  「.git」というディレクトリの中身は、特別な理由がない限りは、直接編集しないよう注意しましょう。
+</p>
+<p>
+  これでGitリポジトリの初期化の作業が完了です。
+</p>
 
   </div>
   <div class="bottom">
