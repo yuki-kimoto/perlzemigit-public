@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Entries - Perl開発者のGit入門 - Git元気</title>
-<meta name="description" content="Entries of Perl開発者のGit入門 - Git元気">
+<title>メールアドレスと名前の登録 - Perl開発者のGit入門 - Git元気</title>
+<meta name="description" content="個人の識別情報としてGitに、メールアドレスと名前を登録しましょう。これは、コミットするときの個人の識別情報として利用されます。">
   </head>
   <body>
     <div class="container">
@@ -29,75 +29,33 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/list.html">Entries</a></h2>
-<ul>
-  <li style="list-style:none;">
-    <b>2021</b>
-  </li>
-  <li style="list-style:none">
-    7/21 <a href="/blog/20210721142530.html">メールアドレスと名前の登録</a>
-  </li>
-  <li style="list-style:none">
-    7/20 <a href="/blog/20210720092930.html">Gitリポジトリの初期化</a>
-  </li>
-  <li style="list-style:none">
-    7/19 <a href="/blog/20210719151607.html">Gitとは</a>
-  </li>
-  <li style="list-style:none;">
-    <b>2020</b>
-  </li>
-  <li style="list-style:none">
-    12/22 <a href="/blog/20201222100951.html">git checkout - ブランチの変更</a>
-  </li>
-  <li style="list-style:none">
-    12/21 <a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a>
-  </li>
-  <li style="list-style:none">
-    12/20 <a href="/blog/20201220091244.html">git branch - ブランチの一覧表示・ブランチの作成</a>
-  </li>
-  <li style="list-style:none">
-    11/13 <a href="/blog/20201113141302.html">git commit - コミットする</a>
-  </li>
-  <li style="list-style:none">
-    11/12 <a href="/blog/20201112094521.html">git add - ファイルをコミット準備状態にする</a>
-  </li>
-  <li style="list-style:none">
-    11/10 <a href="/blog/20201110105057.html">git status - コミット準備されているかを確認する</a>
-  </li>
-  <li style="list-style:none">
-    11/9 <a href="/blog/20201109142343.html">git init - Gitリポジトリの初期化</a>
-  </li>
-  <li style="list-style:none">
-    11/3 <a href="/blog/20201103093112.html">git log - コミットログの内容を見る</a>
-  </li>
-  <li style="list-style:none">
-    6/18 <a href="/blog/20200618094326.html">GithubのWikiの新規作成</a>
-  </li>
-  <li style="list-style:none">
-    6/17 <a href="/blog/20200617094326.html">GithubのWikiの編集</a>
-  </li>
-  <li style="list-style:none">
-    6/16 <a href="/blog/20200616094326.html">Github Wikiのコンテンツのバックアップ方法</a>
-  </li>
-  <li style="list-style:none">
-    6/15 <a href="/blog/20200615091136.html">Githubへのアカウント登録</a>
-  </li>
-  <li style="list-style:none">
-    6/14 <a href="/blog/20200614091136.html">GithubでのGitリポジトリの作成</a>
-  </li>
-  <li style="list-style:none">
-    6/13 <a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a>
-  </li>
-  <li style="list-style:none">
-    6/12 <a href="/blog/20200612091136.html">Github Wikiのコンテンツの検索方法</a>
-  </li>
-  <li style="list-style:none">
-    6/10 <a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a>
-  </li>
-  <li style="list-style:none">
-    6/5 <a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a>
-  </li>
-</ul>
+    <h2><a href="/blog/20210721142530.html">メールアドレスと名前の登録</a></h2>
+<p>
+  個人の識別情報としてGitに、メールアドレスと名前を登録しましょう。これは、コミットするときの個人の識別情報として利用されます。
+</p>
+<pre>
+# 名前の設定
+git config --global user.name "John Doe"
+
+# メールアドレスの設定
+git config --global user.email johndoe@example.com
+</pre>
+<p>
+  この設定内容は「~/.gitconfig」に保存されます。<a href="https://linux-perl-genki.com/blog/20200113083613.html">catコマンド</a>で内容を見てみましょう。
+</p>
+<pre>
+cat ~/.gitconfig
+</pre>
+<p>
+  出力したサンプルです。
+</p>
+<pre>
+[user]
+        email = kimoto_yuki@example.com
+        name = Yuki Kimoto
+[core]
+        editor = vi
+</pre>
 
   </div>
   <div class="bottom">
