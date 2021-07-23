@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>コミットの準備を行う - Perl開発者のGit入門 - Git元気</title>
+<meta name="description" content="Gitでは、コミットを行う前に、コミットの準備を行います。コミットの準備を行うには「git add」コマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git元気</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210723090147.html">コミットの準備を行う</a></h2>
+<p>
+  Gitでは、コミットを行う前に、コミットの準備を行います。コミットの準備を行うには「<a href="/blog/20201112094521.html">git add</a>」コマンドを使用します。
+</p>
+<pre>
+# ひとつのファイルをコミット準備状態にする
+git add ファイル名
+</pre>
+<p>
+  カレントディレクトリ以下にある、すべてのファイルを、コミット準備状態にするには「git add .」とします。Git 2.0からは、削除されたファイルも、コミット準備状態にしてくれます。
+</p>
+<pre>
+# カレントディレクトリ以下にあるファイルをコミット準備状態にする
+git add .
+</pre>
+<h3>コミット準備状態を確認する</h3>
+<p>
+  コミット準備状態を確認するには「<a href="/blog/20201110105057.html">git status</a>」コマンドを使用します。
+</p>
+<pre>
+# コミット準備状態を確認する
+git status
+</pre>
+<p>
+  コミット準備ができている場合の出力のサンプルです。「templates/index.html」は修正、「README.md」削除で、コミット準備状態になっています。
+</p>
+<pre>
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        deleted:    README.md
+        modified:   templates/index.html
+</pre>
+<h3>コミットされるファイルの差分を確認する</h3>
+<p>
+  コミットする前には、実際にコミットされるファイルの差分を確認しましょう。実際にコミットされるファイルの差分を確認するには「git diff」コマンドの「--cached」オプションを使用します。「--cached」オプションのない「git diff」は、ワーキングディレクトリと、コミット準備されたファイルの差分を表示するので、注意しましょう。
+</p>
+<pre>
+# コミットされるファイルの差分を確認する
+git diff --cached
+</pre>
+<p>
+  出力例です。
+</p>
+<pre>
+$ git diff --cached
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+-&lt;h1&gt;
+-  Perl入門ゼミ
+-&lt;/h1&gt;
+-
+-
+diff --git a/templates/index.html b/templates/index.html
+index 66c755ea..f0b95399 100644
+--- a/templates/index.html
++++ b/templates/index.html
+@@ -2,7 +2,7 @@
+
+ &lt;b&gt;Perlテキスト処理&lt;/b&gt;と&lt;b&gt;正規表現&lt;/b&gt;の入門の入門講座です。Perlは&lt;b&gt;テキスト処理&lt;/b&gt;と&lt;b&gt;正規表現&lt;/b&gt;が得意なプログラミング言語で&lt;b&gt;Linuxサーバー管理&lt;/b&gt;、&lt;b&gt;Webシステム開発&lt;/b&gt;という分野で活躍。テキスト処理と正規表現の基礎としてPerlプ
+ログラミング言語を基本から解説。LinuxとWeb開発も学べます。Hello World!
+
+-Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。
++Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。いいね。
+
+ &lt;h3&gt;Perlプログラミング入門&lt;/h3&gt;
+</pre>
+ 
+<h3>コミット準備をキャンセルする</h3>
+<p>
+  コミット準備をキャンセルするには「git reset」コマンドをを使用します。
+</p>
+<pre>
+# コミット準備をキャンセルする
+git reset
+</pre>
+<p>
+  間違っても、決して、コミット準備をキャンセルするために「git reset」コマンドに「--hard」オプションをつけないでください。今まで書いた、ワーキングディレクトリの変更内容が、すべてキャンセルされ、涙が出てきます。テキストエディタ上に、変更内容が残っている場合は、急いで、上書きしましょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:30px;font-weight:bold;font-size:22px;">
+Perlテキスト処理と正規表現の基礎を学ぶ
+</div>
+<div style="text-align:center;margin-top:30px;">
+  <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" style="width:220px;margin:0 auto;"></a><br><a href="https://www.perlri.com/book/perl_text_essense" style="font-size:20px;">Perlテキスト処理のエッセンス発売中</a>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    Perlテキスト処理のエッセンス
+  </div>
+  <ul>
+    <li style="text-align:center;">
+      <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" width="160"></a><br>
+      <a href="https://www.perlri.com/book/perl_text_essense">Perlテキスト処理のエッセンス</a><br>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Perl元気塾
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
