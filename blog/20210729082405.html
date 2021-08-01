@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>コミットを行う - Perl開発者のGit入門 - Git元気</title>
+<meta name="description" content="Gitでコミットを行う方法を解説します。git commitコマンドで、コミットができます。コミットの準備ができている必要があります。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git元気</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210729082405.html">コミットを行う</a></h2>
+<p>
+  Gitでコミットを行う方法を解説します。<a href="/blog/20201113141302.html">git commit</a>コマンドで、コミットができます。<a href="/blog/20210723090147.html">コミットの準備</a>ができている必要があります。
+</p>
+<p>
+  コミットを行うには、ソースコードの変更の要点を記述したコメントを入力する必要があります。「-m」オプションで指定します。このコメントは、コミットメッセージと呼ばれます。
+</p>
+<pre>
+# コメントを直接入力してコミット
+git commit -m "コメント"
+</pre>
+<p>
+  「-m」オプションを使用しない場合は、viなどのエディタで、開くことができます。このエディタは、Gitの設定ファイルで設定することもできます。
+</p>
+<pre>
+# コメントをviなどのエディタで開いて記述してからコミットメッセージを書くこともできます。
+git commit
+</pre>
+<h3>コミットの確認</h3>
+<p>
+  コミットを確認するには<a href="/blog/20201103093112.html">git logコマンド</a>を使います。
+</p>
+<pre>
+git log
+</pre>
+<p>
+  git logの出力のサンプルです。一番上が新しいコミットです。今コミットしたコミットメッセージが、一番上にきていることを確認しましょう。
+</p>
+<pre>
+commit 99e77ecbb2fa0922aed2995ebc20eea20b559a87 (HEAD -&gt; main, origin/main)
+Author: Yuki Kimoto &lt;kimoto.yuki@gmail.com&gt;
+Date:   Thu Jul 29 08:58:33 2021 +0900
+
+    ウィンドウのテキストを取得を追加
+
+commit 8166b40288648dab314147df751c2d27788b1d03
+Author: Yuki Kimoto &lt;kimoto.yuki@gmail.com&gt;
+Date:   Wed Jul 28 08:53:01 2021 +0900
+
+    子ウィンドウの一覧を取得とデスクトップウィンドウの取得を追
+
+commit 7768973127fa0495e1ac8ab745d2f10fc1c38f8a
+Author: Yuki Kimoto &lt;kimoto.yuki@gmail.com&gt;
+Date:   Tue Jul 27 08:16:09 2021 +0900
+
+    PerlでWebブラウザ自動操作ロボット作成方法のまとめ加筆
+</pre>
+<p>
+  注意点として、これは、個人サイトのものなので、コミットメッセージがだいぶ適当ですが、共同開発の場合は、もう少し丁寧に書きましょう。
+</p>
+<h3>間違ったコミットを戻すには?</h3>
+<p>
+  間違ってコミットしたことに、コミット直後に気が付きました。こんな場合は、間違ったコミットを戻すには、どうすればよいのでしょうか?
+</p>
+<p>
+  「git reset」コマンドを使って、以前のコミットまで戻します。一つ前のコミットIDを確認しましょう。上記の例では以下の「8166b40288648dab314147df751c2d27788b1d03」です。
+</p>
+<pre>
+commit 8166b40288648dab314147df751c2d27788b1d03
+Author: Yuki Kimoto &lt;kimoto.yuki@gmail.com&gt;
+Date:   Wed Jul 28 08:53:01 2021 +0900
+
+    子ウィンドウの一覧を取得とデスクトップウィンドウの取得を追
+</pre>
+<p>
+  このコミットIDを「git reset」の引数に指定します。
+</p>
+<pre>
+# 一つ前のコミットに戻す
+git reset 8166b40288648dab314147df751c2d27788b1d03
+</pre>
+<p>
+  間違っても「git reset」コマンドに「--hard」オプションを指定しないようにしましょう。ワーキングディレクトリでのファイルの変更がすべて戻り、涙が出てきます。テキストエディタでファイルを開いていて、内容が残っている場合は、素早く上書きしましょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:30px;font-weight:bold;font-size:22px;">
+Perlテキスト処理と正規表現の基礎を学ぶ
+</div>
+<div style="text-align:center;margin-top:30px;">
+  <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" style="width:220px;margin:0 auto;"></a><br><a href="https://www.perlri.com/book/perl_text_essense" style="font-size:20px;">Perlテキスト処理のエッセンス発売中</a>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    Perlテキスト処理のエッセンス
+  </div>
+  <ul>
+    <li style="text-align:center;">
+      <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" width="160"></a><br>
+      <a href="https://www.perlri.com/book/perl_text_essense">Perlテキスト処理のエッセンス</a><br>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Perl元気塾
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
