@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git diff - 差分の表示 - Perl開発者のGit入門 - Git元気</title>
+<meta name="description" content="git diffコマンドは差分を表示するコマンドです。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Git元気</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210805092910.html">git diff - 差分の表示</a></h2>
+<p>
+  git diffコマンドは差分を表示するコマンドです。
+</p>
+<pre>
+# 差分の表示
+git diff
+</pre>
+<p>
+  git diff コマンドの出力例です。
+</p>
+<pre>
+$ git diff
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+-&lt;h1&gt;
+-  Perl入門ゼミ
+-&lt;/h1&gt;
+-
+-
+diff --git a/templates/index.html b/templates/index.html
+index 66c755ea..f0b95399 100644
+--- a/templates/index.html
++++ b/templates/index.html
+@@ -2,7 +2,7 @@
+
+ &lt;b&gt;Perlテキスト処理&lt;/b&gt;と&lt;b&gt;正規表現&lt;/b&gt;の入門の入門講座です。Perlは&lt;b&gt;テキスト処理&lt;/b&gt;と&lt;b&gt;正規表現&lt;/b&gt;が得意なプログラミング言語で&lt;b&gt;Linuxサーバー管理&lt;/b&gt;、&lt;b&gt;Webシステム開発&lt;/b&gt;という分野で活躍。テキスト処理と正規表現の基礎としてPerlプ
+ログラミング言語を基本から解説。LinuxとWeb開発も学べます。Hello World!
+
+-Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。
++Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。いいね。
+
+ &lt;h4&gt;Perlプログラミング入門&lt;/h4&gt;
+</pre>
+<p>
+  git diffコマンドは、引数がない場合は、ワーキングディレクトリと<a href="/blog/20210723090147.html">コミット準備状態</a>との差分を表示します。コミット準備状態は、コミット準備を行っていない場合は、直近のコミットです。
+</p>
+<p>
+  つまり、コミット準備を行った後は「git diff」コマンドは、なんの差分も表示しないということに注意しましょう。
+</p>
+<h4>直近のコミットとコミット準備状態の差分を表示する</h4>
+<p>
+  直近のコミットとコミット準備状態の差分を表示するには「--cached」オプションを使い「git diff --cached」とします。
+</p>
+<pre>
+# 直近のコミットとコミット準備状態の差分を表示
+git diff --cached
+</pre>
+<p>
+  「git add .」でコミット準備状態にした後に、実際にどんな差分が新しいコミットに追加されるのかを知るには「--cached」オプションを使用する必要があることに注意しましょう。
+</p>
+<h4>特定のコミット間の差分を表示する</h4>
+<p>
+  特定のコミット間の差分を表示するには、二つのコミットIDを引数に指定します。
+</p>
+<pre>
+git diff コミットID1 コミットID2
+</pre>
+<p>
+  コミットIDを調べるには<a href="/blog/20201103093112.html">git logコマンド</a>を使用します。
+</p>
+<p>
+  コミットIDを指定したサンプルです。
+</p>
+<pre>
+git diff 30ce650c40cd05632fc8a992a7bff9d79dbaaa08 016d2063f2ed90d14ba9cea1a7ef1c2f962a003b
+</pre>
+<h4>現在のコミットと一つ前のコミットとの差分を表示する</h4>
+<p>
+  現在のコミットと一つ前のコミットとの差分を表示してみましょう。HEADというブランチが現在のブランチの先頭を示し、「^」という記号が、一つ前を表示することを利用すると次のように書けます。
+</p>
+<pre>
+git diff HEAD^ HEAD
+</pre>
+<p>
+  さらに、省略して、以下のように書けます。
+</p>
+<pre>
+git diff HEAD^
+</pre>
+<h4>特定のコミットとその直前のコミットの差分を表示する</h4>
+<p>
+  特定のコミットとその直前のコミットの差分を表示するには以下のようにします。
+</p>
+<pre>
+git diff 30ce650c40cd05632fc8a992a7bff9d79dbaaa08^ 30ce650c40cd05632fc8a992a7bff9d79dbaaa08
+</pre>
+<h4>ブランチの差分を表示する</h4>
+<p>
+  ブランチの差分を表示するには以下のようにしましょう。ブランチがコミットに別名をつけたものだということを、知っていれば理解できますね。
+</p>
+<pre>
+git diff main some_branch
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:30px;font-weight:bold;font-size:22px;">
+Perlテキスト処理と正規表現の基礎を学ぶ
+</div>
+<div style="text-align:center;margin-top:30px;">
+  <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" style="width:220px;margin:0 auto;"></a><br><a href="https://www.perlri.com/book/perl_text_essense" style="font-size:20px;">Perlテキスト処理のエッセンス発売中</a>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>プログラミングスクール<br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    Perlテキスト処理のエッセンス
+  </div>
+  <ul>
+    <li style="text-align:center;">
+      <a href="https://www.perlri.com/book/perl_text_essense"><img alt="テキスト処理" src="https://tutorial.perlzemi.com/images/book/perl_text_essence.jpg" width="160"></a><br>
+      <a href="https://www.perlri.com/book/perl_text_essense">Perlテキスト処理のエッセンス</a><br>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Perl元気塾
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
