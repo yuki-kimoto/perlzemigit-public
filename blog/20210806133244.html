@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git resetコマンド - コミットの位置を移動する - Perl開発者のGit入門 - Perl元気塾のGit講座</title>
+<meta name="description" content="git resetコマンドは、現在のブランチのコミットの位置を移動するコマンドです。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Perl開発者のためのGit入門</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210806133244.html">git resetコマンド - コミットの位置を移動する</a></h2>
+<p>
+  git resetコマンドは、現在のブランチのコミットの位置を移動するコマンドです。
+</p>
+<pre>
+git reset コミットID
+</pre>
+<p>
+  git resetコマンドは、使い方によっては、現在のワーキングディレクトリの変更内容をなかったことにしてしまうので、この点について、先に書いておきます。
+</p>
+<h3>--hardオプションは、ワーキングディレクトリの変更すべて元に戻す</h3>
+<p>
+  git resetコマンドの「--hard」オプションは、ワーキングディレクトリに行われている変更をすべて元に戻します。
+</p>
+<pre>
+# ワーキングディレクトリに行われている変更をすべて元に戻し
+# コミット位置を変更
+git reset --hard コミットID
+</pre>
+<p>
+  ですので、git resetコマンドを使う場合は、コミットの位置だけを移動したいのか、ワーキングディレクトリに加えた変更を戻したいのかということを、まずよく考えてください。
+</p>
+<h3>ワーキングディレクトリに加えた変更をすべて元に戻したい</h3>
+<p>
+  ソースコードを変更していて、ワーキングディレクトリに加えた変更を元に戻したという場合は「--hard」オプションを指定します。コミットIDが省略された場合は、最新のコミット位置に戻ります。
+</p>
+<pre>
+# ワーキングディレクトリに加えた変更をすべて元に戻したい
+git reset --hard
+</pre>
+<h3>ワーキングディレクトリに加えた変更を維持して前のコミットに戻したい</h3>
+<p>
+  間違ってコミットしてしまった場合、ワーキングディレクトリに加えた変更を維持して、前のコミットに戻したいという場合があります。そのような場合は「--hard」オプションを指定せずに、一つ前のコミットIDを指定します。
+</p>
+<pre>
+# ワーキングディレクトリに加えた変更を維持して前のコミットに戻したい
+git reset ひとつ前のコミットID
+</pre>
+<h3>過去のある状態を復元したい</h3>
+<p>
+  過去に削除した実装をもう一度参考にしたいなど、過去のある状態に戻したいという場合があります。このような場合は、<a href="/blog/20201220091244.html">git branch</a>コマンドで、過去用のブランチを作成してから、「git reset --hard」で過去の状態に戻すのが安全です。
+</p>
+<pre>
+# oldブランチを作成
+git branch old
+
+# oldブランチに切り替え
+git checkout old
+
+# 現在のブランチがoldであることを確認
+git branch
+
+# 以下のように出力されることを確認
+  main
+* old
+
+# 過去の状態に戻る
+git reset --hard 過去のある時点のコミットID
+</pre>
+<p>
+  戻りたい地点を探すには、コミットメッセージを検索できる、<a href="/blog/20201103093112.html">git log</a>コマンドの「--grep」オプションが便利です。
+</p>
+<pre>
+git log --grep 'fix foo'
+</pre>
+<p>
+  コミットIDが見つかった、その状態に戻したければ、そのコミットIDを使いましょう。また、その一つ前に戻りたいという場合もあると思います。その場合は、一つ前のコミットを表現する「^」を使えます。
+</p>
+<pre>
+# 見つかったコミットIDに戻す
+git reset --hard コミットID
+
+# 見つかったコミットIDの直前に戻す
+git reset --hard コミットID^
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>プログラミングスクール<br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    プログラミングスクール<br>Perl元気塾
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
