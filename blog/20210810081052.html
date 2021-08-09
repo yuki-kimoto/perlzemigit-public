@@ -7,8 +7,8 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Githubへのアカウント登録 - 実践Git入門 - Perl元気塾のGit講座</title>
-<meta name="description" content="Githubへのアカウント登録の方法を解説します。">
+<title>git remote - リモートリポジトリの追加・変更・削除 - 実践Git入門 - Perl元気塾のGit講座</title>
+<meta name="description" content="git remoteコマンドは、リモートリポジトリの追加・変更・削除を行うコマンドです。もうすこし、正確に書くと、URLで表現されるリモートリポジトリを表す簡単な名前を、追加・変更・削除するコマンドです。">
   </head>
   <body>
     <div class="container">
@@ -29,46 +29,64 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200615091136.html">Githubへのアカウント登録</a></h2>
+    <h2><a href="/blog/20210810081052.html">git remote - リモートリポジトリの追加・変更・削除</a></h2>
 <p>
-  Githubへのアカウント登録の方法を解説します。
-</p>
-<h3>Githubとは</h3>
-<p>
-  Githubは、Gitリポリトリを管理できる無料のWebサービスです。第三者に公開したくないファイルをプライベートで管理することもできます。
+  git remoteコマンドは、リモートリポジトリの追加・変更・削除を行うコマンドです。もうすこし、正確に書くと、URLで表現されるリモートリポジトリを表す簡単な名前を、追加・変更・削除するコマンドです。
 </p>
 <p>
-  無料プランの場合でも、プライベートリポジトリーの作成や、コラボレーターと呼ばれる共同開発者の追加を無制限で行うことができます。
+  以下の解説は、便宜的にリモートリポジトリの追加・変更・削除という言葉で書きますが、実際の内容は、URLで表現されるリモートリポジトリを表す簡単な名前を、追加・変更・削除しているということを意識してください。
+</p>
+<h3>リモートリポジトリの追加</h3>
+<p>
+  リモートリポジトリを追加するには「git remote add」コマンドを使用します。最初の引数は、リモートブランチの名前、第二引数は、リモートブランチのURLです。
 </p>
 <p>
-  月額21ドル(2019年1月8日の情報)のエンタープライズプランに申し込めば、<a href="https://help.github.com/ja/github/setting-up-and-managing-your-enterprise-account/enforcing-security-settings-in-your-enterprise-account#managing-allowed-ip-addresses-for-organizations-in-your-enterprise-account">IPアドレス制限</a>を行うことが可能です。Web上での操作で、誤って、リポジトリを公開状態にしてしまって機密情報が洩れるというミスを防ぐことが可能です。
+  デフォルトのリモートリポジトリの名前は、慣習で「origin」です。
 </p>
+<pre>
+# リモートリポジトリの追加
+git remote add origin git@github.com:yuki-kimoto/perlzemigit.git
+</pre>
+<h3>リモートリポジトリの変更</h3>
 <p>
-  Githubの機能は、ソースコードの管理が中心ですが、バグを追いかけるためのIssueと呼ばれる掲示板機能があるので、バグ修正・製品改善のための情報を共有することが可能です。
+  リモートリポジトリ名が指しているURLを変更するには「git remote set-url」コマンドを使用します。
 </p>
+<pre>
+git remote set-url origin git@github.com:yuki-kimoto/ohter.git
+</pre>
+<h3>リモートリポジトリの削除</h3>
 <p>
-  またWikiの機能が、プロジェクトごとに存在し、マークダウンという記法で、ドキュメントを共有することも可能です。WikiとIssueを使うだけであれば、Gitの知識を必要としないので、Gitの知識がない方でも、試してみるという価値はあります。
+  リモートリポジトリの削除するには「git remote remove」コマンドを使用します。
 </p>
-<h3>Githubへのアカウント登録</h3>
+<pre>
+git remote remove origin
+</pre>
+<h3>リモートリポジトリの一覧の表示</h3>
 <p>
-  まずGithubへの<a href="https://github.com/join">アカウント登録</a>をします。
+  リモートリポジトリの一覧を表示するには「git remote」とします。
 </p>
+<pre>
+git remote
+</pre>
 <p>
-  <a href="https://github.com/join"><img src="/images/github/github_create_acount.png" style="width:100%"></a>
+  出力結果のサンプルです。
 </p>
+<pre>
+origin
+</pre>
 <p>
-  アカウント登録するとメールが送信されてきますので、Verify email addressのリンクをクリックして、登録を完了します。
+  リモートリポジトリが、どのURLを指しているかを知りたい場合は「git remote」の「-v」オプションを使用します。
 </p>
+<pre>
+git remote -v
+</pre>
 <p>
-  サインイン画面が現れたときは、登録したユーザー名とパスワードでサインインしてください。
+  出力結果のサンプルです。
 </p>
-<p>
-  ユーザー認証が完了します。
-</p>
-<h3>Gitリポジトリの作成</h3>
-<p>
-  Githubにおける、Gitリポジトリの作成については、以下の記事を参考にしてください。
-</p>
+<pre>
+origin  git@github.com:yuki-kimoto/perlzemigit.git (fetch)
+origin  git@github.com:yuki-kimoto/perlzemigit.git (push)
+</pre>
 
   </div>
   <div class="bottom">
