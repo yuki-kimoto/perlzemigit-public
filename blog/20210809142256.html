@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git fetch - リモートリポジトリの情報取得 - Perl開発者のGit入門 - Perl元気塾のGit講座</title>
+<meta name="description" content="git fetchコマンドを使用するとリモートリポジトリの情報を取得することができます。感覚的には、リモートリポジトリを、ローカルリポジトリへ同期すると考えてください。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">Perl開発者のためのGit入門</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210809142256.html">git fetch - リモートリポジトリの情報取得</a></h2>
+<p>
+  git fetchコマンドを使用するとリモートリポジトリの情報を取得することができます。感覚的には、リモートリポジトリを、ローカルリポジトリへ同期すると考えてください。
+</p>
+<pre>
+# リモートリポジトリの情報を取得
+git fetch
+</pre>
+<h3>git fetchを使うのはどのようなときですか?</h3>
+<p>
+  「git pull」コマンドを使うと「git fetch」を行うことに加えて、現在のブランチに指定したリモートリポジトリのブランチの変更内容をマージしてくれます。
+</p>
+<p>
+  ですので「git pull」よりも「git fetch」を使いたい場合は、現在のブランチにリモートブランチの変更内容をマージしたくない場合です。
+</p>
+<p>
+  他の開発者が作ったリモートにあるブランチを元に、ローカルのブランチを作ったり、手動でリモートリポジトリのブランチをマージしたいときなどがあります。
+</p>
+<p>
+  また、安全のために「git pull」をまったく使わずに「git fetch」とマージ作業を分けて行うという開発者の方もおられます。
+</p>
+<h3>git fetchで知っておいた方が良いことを教えてください</h3>
+<p>
+  タグは、同期されます。
+</p>
+<p>
+  リモートブランチとローカルブランチを区別してください。git fetchをすると、リモートブランチを、ローカルリポジトリの中に取り込みますが、リモートブランチとローカルブランチは異なるものです。
+</p>
+<p>
+  リモートブランチは「origin/foo」のように先頭に「origin」がついています。
+</p>
+<p>
+  <a href="/blog/20201220091244.html">git branch</a>コマンドで、ローカルブランチ表示してみましょう。
+</p>
+<pre>
+# ローカルブランチの表示
+git branch
+</pre>
+<p>
+  ローカルブランチの出力結果の例です。
+</p>
+<pre>
+main
+foo
+bar
+</pre>
+<p>
+  git branchコマンドの「-r」オプションで、リモートブランチを表示してみましょう。
+</p>
+<pre>
+# リモートブランチの表示
+git branch -r
+</pre>
+<p>
+  リモートブランチの出力結果の例です。
+</p>
+<pre>
+origin/foo
+origin/baz
+</pre>
+<p>
+  ややこしいのは、リモートブランチとは、リモートリポジトリにあるブランチのことではなくって、ローカルリポジトリの中にある、リモートリポジトリにあるブランチのコミットを指し示すブランチだということです。
+</p>
+<p>
+  ややこしいですが「origin/foo」「origin/baz」は「git fetch」により、ローカルリポジトリに取り込まれたと、考えてください。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>プログラミングスクール<br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    プログラミングスクール<br>Perl元気塾
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
