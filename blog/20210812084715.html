@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git push - ローカルリポジトリの内容をリモートリポジトリに転送 - 実践Git入門 - Perl元気塾のGit講座</title>
+<meta name="description" content="git pushコマンドを使うと、ローカルリポジトリの内容をリモートリポジトリに転送し、ブランチの先頭位置を更新できます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">実践Git入門</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210812084715.html">git push - ローカルリポジトリの内容をリモートリポジトリに転送</a></h2>
+<p>
+  git pushコマンドを使うと、ローカルリポジトリの内容をリモートリポジトリに転送し、ブランチの先頭位置を更新できます。
+</p>
+<pre>
+# ローカルリポジトリの内容をリモートリポジトリに転送し
+# リモートリポジトリのmainブランチの位置を更新
+git push origin main
+</pre>
+<h3>タグをリモートリポジトリに追加するには</h3>
+<p>
+  タグをリモートリポジトリに転送するには、ブランチ名の代わりに、タグ名を指定します。
+</p>
+<pre>
+git push origin タグ名
+</pre>
+<h3>すべてのタグをリモートリポジトリに追加する</h3>
+<p>
+  すべてのタグをリモートリポジトリに追加したい場合は「--tags」を引数に指定します。
+</p>
+<pre>
+git push origin --tags
+</pre>
+<h3>ブランチ名を明示的にしていするのが良いの?</h3>
+<p>
+  はい。ブランチ名を明示的に指定するのが良いです。引数を省略した場合はGit 2.0より前のバージョンでは、すべてのブランチの先頭位置を更新してしまうからです。
+</p>
+<p>
+  Git 2が、広くインストールされるようになるまでは、ブランチ名を明示的に指定しましょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>プログラミングスクール<br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    プログラミングスクール<br>Perl元気塾
+  </a>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
+     crossorigin="anonymous"></script>
+      </div>
+    </div>
+  </body>
+</html>
