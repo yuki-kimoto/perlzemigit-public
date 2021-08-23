@@ -7,7 +7,7 @@
 <link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>git merge - マージする(書きかけ) - 実践Git入門 - Perl元気塾のGit講座</title>
+<title>git merge - マージする - 実践Git入門 - Perl元気塾のGit講座</title>
 <meta name="description" content="「git merge」コマンドでマージができます。git mergeの引数はコミットIDですが、ブランチはコミットIDに名前を付けたもので、日常の用途においては、ブランチ名を指定してマージを行います。マージ先は、現在のカレントブランチです。">
   </head>
   <body>
@@ -29,7 +29,7 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20210819082837.html">git merge - マージする(書きかけ)</a></h2>
+    <h2><a href="/blog/20210819082837.html">git merge - マージする</a></h2>
 <p>
   「git merge」コマンドでマージができます。git mergeの引数はコミットIDですが、<a href="/blog/20201220091244.html">ブランチ</a>はコミットIDに名前を付けたもので、日常の用途においては、ブランチ名を指定してマージを行います。マージ先は、現在のカレントブランチです。
 </p>
@@ -78,8 +78,46 @@ git diff マージしたいブランチ名
 <p>
   一番単純なマージのアルゴリズムです。コミットを単純に進めることで、マージが可能な場合は、これが選択されます。
 </p>
+<h4>ノンファストフォワードマージ</h4>
 <p>
-  (書きかけ)
+  二つのブランチの共通の祖先の位置からのそれぞれの差分をマージします。マージが衝突する場合があります。
+</p>
+<p>
+  ここで、びっくりするのは、マージするときに、<a href="https://linux-perl-genki.com/blog/20190401171737.html">vi</a>などのコマンドラインエディタが立ち上がることです。
+</p>
+<p>
+  何も問題がなければ「ESC」でコマンドモードにして「wq」「Enter」(保存して終了)と押して、マージを完了させましょう。
+</p>
+<h3>マージの衝突の解決</h3>
+<p>
+  マージが衝突した場合は、衝突を解決する必要があります。ぶつかった場合は、ソースコードの中に、以下のように表示されます。私はパスを「/foo」に変え、マシュマロさんはテキストを「Good bye」に変えてしまったので、衝突してしまいました。
+</p>
+<pre>
+コードほにゃ前
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&lt;a href="/foo"&gt;Hello&lt;/a&gt;
+=======
+&lt;a href="/bar"&gt;Good bye&lt;/a&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; masu_fix_bug
+
+コードほにゃ後ろ
+</pre>
+<p>
+  この部分は、どうあるべきなのかを、考えて、手動で修正する必要があります。修正の例です。
+</p>
+<pre>
+コードほにゃ前
+
+&lt;a href="/foo"&gt;Good bye&lt;/a&gt;
+
+コードほにゃ後ろ
+</pre>
+<p>
+  これで、二人の変更内容が正しく反映された内容ができました。
+</p>
+<p>
+  後は<a href="/blog/20201112094521.html">git add</a>コマンドで「git add .」して、<a href="/blog/20201113141302.html">git commit</a>コマンドで、コミットをする通常のコミット手順を行うだけです。
 </p>
 
   </div>
