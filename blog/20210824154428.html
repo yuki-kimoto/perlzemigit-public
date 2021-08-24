@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git rebase - 複数のコミットを改変してまとめる - 実践Git入門 - プロのWeb開発者を目指す方のGit講座</title>
+<meta name="description" content="git rebaseコマンドは、複数のコミットを改変してまとめるコマンドです。新しく作成されたコミットは、派生元のブランチの先に、ファストフォワードでマージできます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<div class="main">
+  <h1>
+    <a href="/">実践Git入門</a>
+  </h1>
+</div>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20210824154428.html">git rebase - 複数のコミットを改変してまとめる</a></h2>
+<p>
+  git rebaseコマンドは、複数のコミットを改変してまとめるコマンドです。新しく作成されたコミットは、派生元のブランチの先に、ファストフォワードでマージできます。
+</p>
+<pre>
+git rebase 派生元のブランチ
+</pre>
+<p>
+  mainブランチから分岐したfooブランチを作成して、コミット「A」「B」「C」と進んだとします。派生元のmainブランチを「git rebase」で指定すると、複数の「A」「B」「C」をまとめた一つのコミットが作成されます。これは、mainブランチにマージしたときに、ファストフォワードでマージできます。
+</p>
+<p>
+  git rebaseは、コミットを改変してまとめるコマンドなので、リポジトリを壊す可能性のあるコマンドです。git branchで、git rebase用の作業ブランチを作成するのがお勧めです。
+</p>
+<pre>
+git branch foo_rebase
+git checkout foo_rebase
+</pre>
+<h3>「git push」したものに対しては「git rebase」しない</h3>
+<p>
+  「git rebase」の注意点は、「git push」したものに対しては「git rebase」しないというものです。pushしていないブランチに対してだけ「git rebase」します。
+</p>
+<h3>けっきょく「git rebase」はどんな時に使いたいの?</h3>
+<p>
+  一つ目は、ブランチを派生させて、小さな変更を積み重ねて、どんどんコミットをして、保存しながら、開発しているとします。コミットは、保存という用途もあるので、小さく保存しておきたいという要望があります。
+</p>
+<p>
+  ただし、この場合は、マージは、とても粒度が小さく、機能単位のコメントにはなっていません。マージされる側から見ると、履歴はすっきりしないものとなるでしょう。
+</p>
+<p>
+  このような場合は「git rebase」することで、履歴がきれいになります。
+</p>
+<p>
+  一例をあげておくと、僕の場合は、一般的には、エンドユーザー向けのWebアプリケーション開発では、<a href="/blog/20210819082837.html">git merge</a>マージを使います。履歴をきれいに維持することは、あまり求められない場合です。また、オープンソース開発で、自分の変更をマージしてもらう場合は「git rebase」で、きれいにします。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Perl開発者のためのGit入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-je0Oqmr9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side_list">
+  <div class="side_list_title">
+    講座作成
+  </div>
+  <ul>
+    <li style="text-align:center;padding-left:0"><a href="http://www.perlri.com/"><img width="110" src="https://tutorial.perlzemi.com/images/kaeru_w_01.png"><br>初心者からはじめて<br>プロのWeb開発者<br>になれる講座なら<br>Perl元気塾</a></li>
+  </ul>
+</div>
+<div class="side_list">
+  <div class="side_list_title">
+    コンテンツ
+  </div>
+  <ul>
+    <li><a href="/blog/20200613091136.html">Github公開鍵登録</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <b>Git</b>は、分散リポジトリ型のソースコード管理システムです。<br>リモートとローカルで完全に同一のソースコード管理情報を保有できるため、バックアップが簡単。<br>ブランチの作成が高速。完全な履歴を保有しているので、ソースコードをいつでも過去の状態に戻すことができます。<br>Perlによる<a href="https://websystem.perlzemi.com/">Webシステム開発</a>、<a href="https://datascience.perlzemi.com/">データ分析</a>、<a href="https://deeplearning.perlzemi.com/">ディープラーニングを使ったAI</a>のソースコード管理に活用できます。<br>Gitは<a href="https://linux.perlzemi.com/">Linux</a>ミドルウェアのひとつで、主に<a href="https://c.perlzemi.com/">C言語</a>で書かれ、部分的に<a href="https://tutorial.perlzemi.com/">Perl</a>で書かれています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    初心者からはじめて<br>プロのWeb開発者<br>になれる講座なら<br>Perl元気塾
+  </a>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
+     crossorigin="anonymous"></script>
+      </div>
+    </div>
+  </body>
+</html>
